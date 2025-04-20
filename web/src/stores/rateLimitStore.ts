@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { createWithEqualityFn } from 'zustand/traditional'
 
 export interface RateLimitStoreState {
   actionTimestamps: Record<string, number>
@@ -7,7 +7,7 @@ export interface RateLimitStoreState {
 }
 
 // Store to manage timestamps for rate-limited actions
-export const useRateLimitStore = create<RateLimitStoreState>((set, get) => ({
+export const useRateLimitStore = createWithEqualityFn<RateLimitStoreState>((set, get) => ({
   actionTimestamps: {},
 
   // Sets the last execution time for a specific action ID

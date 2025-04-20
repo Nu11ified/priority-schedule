@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { createWithEqualityFn } from 'zustand/traditional'
 import { shallow } from 'zustand/shallow'
 
 export type NuiMessage =
@@ -18,7 +18,7 @@ export interface NuiState {
 }
 
 // Define the state structure and actions
-export const useNuiState = create<NuiState>((set, get) => ({
+export const useNuiState = createWithEqualityFn<NuiState>((set, get) => ({
   // Initial state
   visible: false,
   uiReady: false,
